@@ -1,0 +1,1181 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="flatbooking.aspx.cs" Inherits="skilltechApp.flatbooking" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="DataSoft  IT Solutions &  Services Template">
+    <link href="../assets/images/favicon/favicon.png" rel="icon">
+    <title>Skill Template</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" ref="stylesheet">
+    <style>
+        .btn-primary {
+            background-color: #091d3e;
+        }
+
+            .btn-primary:hover {
+                background-color: #527bbf;
+            }
+
+        .content {
+            position: relative;
+            animation: animatop 0.9s cubic-bezier(0.425, 1.14, 0.47, 1.125) forwards;
+            margin-bottom: 45px;
+        }
+
+        .card {
+            text-align: center;
+            width: 250px;
+            min-height: 100px;
+            padding: 20px;
+            left: 25px;
+            border-radius: 15px;
+            background-color: white;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .card:hover {
+                background-color: #8a2f2f20;
+            }
+
+            .card:after {
+                content: '';
+                display: block;
+                width: 475px;
+                height: 300px;
+                background: #091d3e;
+                position: absolute;
+                animation: rotatemagic 0.75s cubic-bezier(0.425, 1.04, 0.47, 1.105) 1s both;
+            }
+
+        .badgescard {
+            padding: 10px 20px;
+            border-radius: 50px;
+            background-color: #091d3e;
+            color: #fff;
+            width: 50px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            /*z-index: -1;*/
+            left: 100px;
+            bottom: 10px;
+            animation: animainfos 0.5s cubic-bezier(0.425, 1.04, 0.47, 1.105) 0.75s forwards;
+        }
+
+            .badgescard a {
+                color: #fff;
+            }
+
+                .badgescard a:hover {
+                    color: #848e9f;
+                }
+
+            .badgescard span {
+                font-size: 1.6em;
+                opacity: 0.6;
+            }
+
+        .firstinfo {
+            flex-direction: row;
+            z-index: 2;
+            position: relative;
+        }
+
+            .firstinfo img {
+                border-radius: 50%;
+                width: 150px;
+                height: 150px;
+            }
+
+            .firstinfo .profileinfo h3 {
+                font-size: 1.9em;
+                color: #fff;
+                font-style: italic;
+            }
+
+        @keyframes animatop {
+            0% {
+                opacity: 0;
+                bottom: -500px;
+            }
+
+            100% {
+                opacity: 1;
+                bottom: 0px;
+            }
+        }
+
+        @keyframes animainfos {
+            0% {
+                bottom: 10px;
+            }
+
+            100% {
+                bottom: -42px;
+            }
+        }
+
+        @keyframes rotatemagic {
+            0% {
+                opacity: 0;
+                transform: rotate(0deg);
+                top: -24px;
+                left: -253px;
+            }
+
+            100% {
+                transform: rotate(-30deg);
+                top: -24px;
+                left: -78px;
+            }
+        }
+
+        .sgLi {
+            min-width: 24%;
+            margin: 2% .35%;
+            display: inline-flex;
+            box-shadow: 0 2px 4px rgba(0,0,0, .2);
+        }
+
+            .sgLi:hover {
+                box-shadow: 0 5px 10px rgba(0,0,0,.15);
+            }
+
+
+        /* tr{
+        background: green;
+        color:white;
+    }*/
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="container-fluid px-3">
+            <h2 class="contact-block__title" style="background: #091d3e; color: #fff; text-align: center">ONLINE BOOKING</h2>
+            <div class="row">
+                <div class="mapouter">
+                    <div class="gmap_canvas">
+                        <iframe width="100%" height="250" id="gmap_canvas" src="https://maps.google.com/maps?q=17%C2%B031'11.4%22N%2078%C2%B019'25.6%22E&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                        <a href="https://getasearch.com">getasearch</a><br>
+                        <style>
+                            .mapouter {
+                                position: relative;
+                                text-align: right;
+                                height: 250px;
+                                width: 100%;
+                            }
+                        </style>
+                        <a href="https://www.embedgooglemap.net">free goggle map</a>
+                        <style>
+                            .gmap_canvas {
+                                overflow: hidden;
+                                background: none !important;
+                                height: 250px;
+                                width: 100%;
+                            }
+                        </style>
+                    </div>
+                </div>
+            </div>
+            <!-- /.Header -->
+        </div>
+
+        <!-- =========================
+        Header
+    =========================== -->
+
+        <!-- =========================
+        Body
+    =========================== -->
+        <section class="contact-layout1 pt-0">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="contact-panel__info">
+                            <div class="contact-block">
+                                <h2 class="contact-block__title text-light" style="background: #091d3e; text-align: center; margin: -12px;">PROJECT DETAILS</h2>
+                                <div class="container rounded">
+                                    <div class="col-md-12">
+                                        <div class="row" style="margin-top: 20px">
+                                            <div class="col-md-3">
+                                                <div class="content">
+                                                    <div class="card">
+                                                        <div class="firstinfo">
+                                                            <img src="assets/img/Evalution.jpeg" />
+                                                            <div class="profileinfo">
+                                                                <h3>Elevation</h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="content">
+                                                    <div class="card">
+                                                        <div class="firstinfo">
+                                                            <img src="assets/img/rrhomes.jpg" />
+                                                            <div class="profileinfo">
+                                                                <h3>Floor Plan</h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="content">
+                                                    <div class="card">
+                                                        <div class="firstinfo">
+                                                            <img src="assets/img/carparking.jpg" />
+                                                            <div class="profileinfo">
+                                                                <h3>Parking</h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="content">
+                                                    <div class="card">
+                                                        <div class="firstinfo">
+                                                            <img src="assets/img/carparking.jpg" />
+                                                            <div class="profileinfo">
+                                                                <h3>Specifications</h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+            <!-- /.container -->
+        </section>
+
+        <section class="contact-layout1 pt-0" id="booknow">
+            <div class="container-fluid">
+                <div class="contact-panel__info">
+                    <div class="contact-block">
+                        <h2 class="contact-block__title text-light" style="background: #091d3e; text-align: center;">BOOKING FORM:</h2>
+                        <div class="container rounded bg-white" style="margin-top: 30px;">
+                            <div class="row" id="choosenow">
+                                <div class="col-md-12">
+                                    <div class="row mt-2">
+                                        <div class="col-md-4" style="margin-top: 30px;">
+                                            <div class="col-md-12">
+                                                <label class="labels">Name:</label>
+                                                <asp:TextBox ID="txtName" runat="server" Placeholder="Name" class="form-control"></asp:TextBox>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="labels">Phone Number:</label>
+
+                                                <asp:TextBox ID="txtPhone" runat="server" Placeholder="Phone Number" class="form-control" MaxLength="10"></asp:TextBox>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="labels">Email:</label>
+
+                                                <asp:TextBox ID="txtEmail" runat="server" Placeholder="Email" class="form-control"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h5>Project Details:</h5>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Floor:</label>
+                                                    <asp:TextBox ID="txtFloor" runat="server" Placeholder="Floor" class="form-control"></asp:TextBox>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="labels">Flat:</label>
+
+                                                    <asp:TextBox ID="txtFlatNo" runat="server" Placeholder="Flat No" class="form-control"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label class="labels">Type:</label>
+
+                                                    <asp:TextBox ID="txtType" runat="server" Placeholder="Type" class="form-control"></asp:TextBox>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="labels">Facing:</label>
+                                                    <asp:TextBox ID="txtFacing" runat="server" Placeholder="Facing" class="form-control"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label class="labels">Area in SFT:</label>
+
+                                                    <asp:TextBox ID="txtAreainSFT" runat="server" Placeholder="Area in SFT" class="form-control"></asp:TextBox>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="labels">Sq. Yards:</label>
+                                                    <asp:TextBox ID="txtSqYards" runat="server" Placeholder="Sq. Yards" class="form-control"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 mt-3">
+                                                <asp:Button ID="btnConfirmBooking" runat="server" Text="Confirm Booking" OnClick="btnConfirmBooking_Click" class="btn btn-primary" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <ul style="background-color: #091d3e; color: #fff;">
+                                                <li class="sgLi">
+                                                    <div class="box">
+                                                        <h3>Highlights</h3>
+                                                        <ul class="s1">
+                                                            <li>HMDA Approved</li>
+                                                            <li>100% Customization according to your requirements</li>
+                                                            <li>Loan Facility Available</li>
+                                                            <li><strong>LOCATION : RR Homes , Ameenpur</strong>, Near Fusion Internation School, 1.2 KM from Sridevi Theater, Chandanagar </li>
+                                                            <li><strong>LAND AREA : 1196 sq Yards</strong></li>
+                                                            <li><strong>AMENITIES: Bore, Lift, Car Parking, Generator</strong></li>
+                                                            <li><strong>CONTACT: +91 9603726600</strong></li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container -->
+            </div>
+        </section>
+
+        <!-- /.container -->
+        <section>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="container-fluid mt-3">
+                            <h5 class="text-left">Booking Status</h5>
+                        </div>
+                        <div class="Container-fluid">
+                            <div class="row mt-2">
+                                <div class="accordion" id="accordionExample">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingOne">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                1st Floor
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <div class="table-responsive mx-3">
+                                                    <!--Table-->
+                                                    <table class="table table-hover mb-0">
+                                                        <!--Table head-->
+                                                        <thead style="background-color: #091d3e; color: #fff">
+                                                            <tr>
+                                                                <th scope="col">Flat No</th>
+                                                                <th scope="col">Type</th>
+                                                                <th scope="col">Facing</th>
+                                                                <th scope="col">Area in SFT</th>
+                                                                <th scope="col">Land Share in Sq. Yards</th>
+                                                                <th scope="col">Status</th>
+                                                                <th scope="col">Need Loan facility?</th>
+                                                                <th scope="col">Choice</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <!--Table head-->
+                                                        <!--Table body-->
+                                                        <tbody>
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    <asp:Label ID="lblFlatNo1" runat="server" Text="1" Visible="true"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2BHK" runat="server" Text="2 BHK"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lblEast" runat="server" Text="East"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lblFlat1Area" runat="server" Text="1200"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lblFlat1Sqyds" runat="server" Text="45"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lblFlat1Available" runat="server" Text=""></asp:Label></td>
+                                                                <td>
+                                                                    <asp:RadioButtonList ID="rbtnFlatNo1Loan" runat="server" RepeatDirection="Horizontal">
+                                                                        <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                        <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                        <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                    </asp:RadioButtonList>
+
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <asp:Button ID="btnBookFlat1" runat="server" CssClass="btn btn-primary" Text="Select" href="#booknow" OnClick="btnBookFlat1_Click" />
+
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    <asp:Label ID="lblFlatNo2" runat="server" Text="2" Visible="true"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2ndFlat2BHK" runat="server" Text="2 BHK"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2ndFlatFacing" runat="server" Text="East"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2ndFlatsft1250" runat="server" Text="1250"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2ndFlatYards" runat="server" Text="45"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2ndFlatAvailable" runat="server" Text=""></asp:Label></td>
+                                                                <td>
+                                                                    <asp:RadioButtonList ID="rbtnFlatNo2Loan" runat="server" RepeatDirection="Horizontal">
+                                                                        <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                        <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                        <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                    </asp:RadioButtonList>
+
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <asp:Button ID="btnBookFlat2" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btnBookFlat2_Click" />
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    <asp:Label ID="lblFlatNo3" runat="server" Text="3" Visible="true"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3rdFlattype" runat="server" Text="3 BHK"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3rdFlatFacing" runat="server" Text="East"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3rdFlatsft" runat="server" Text="1550"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3rdFlatYards" runat="server" Text="59"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3rdFlatAvailable" runat="server" Text=""></asp:Label></td>
+                                                                <td>
+                                                                    <asp:RadioButtonList ID="rbtnFlatNo3Loan" runat="server" RepeatDirection="Horizontal">
+                                                                        <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                        <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                        <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                    </asp:RadioButtonList>
+
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <asp:Button ID="btnBookFlat3" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btnBookFlat3_Click" />
+
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    <asp:Label ID="lblFlatNo4" runat="server" Text="4" Visible="true"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4thFlattype" runat="server" Text="2 BHK"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4thFlatFacing" runat="server" Text="North"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4thFlatsft" runat="server" Text="1200"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4thFlatYards" runat="server" Text="45"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4thFlatAvailable" runat="server" Text=""></asp:Label></td>
+                                                                <td>
+                                                                    <asp:RadioButtonList ID="rbtnFlatNo4Loan" runat="server" RepeatDirection="Horizontal">
+                                                                        <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                        <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                        <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                    </asp:RadioButtonList>
+
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <asp:Button ID="btnBookFlat4" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btnBookFlat4_Click" />
+
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    <asp:Label ID="lblFlatNo5" runat="server" Text="5" Visible="true"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl5thFlattype" runat="server" Text="2 BHK"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl5thFlatFacing" runat="server" Text="North"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl5thFlatsft" runat="server" Text="1200"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl5thFlatYards" runat="server" Text="45"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl5thFlatAvailable" runat="server" Text=""></asp:Label></td>
+                                                                <td>
+                                                                    <asp:RadioButtonList ID="rbtnFlatNo5Loan" runat="server" RepeatDirection="Horizontal">
+                                                                        <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                        <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                        <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                    </asp:RadioButtonList>
+
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <asp:Button ID="btnBookFlat5" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btnBookFlat5_Click" />
+
+                                                                </td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                        <!--Table body-->
+                                                    </table>
+                                                    <!--Table-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingTwo">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                2nd Floor
+                                            </button>
+                                        </h2>
+                                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <div class="table-responsive mx-3">
+                                                    <!--Table-->
+                                                    <table class="table table-hover mb-0">
+                                                        <!--Table head-->
+                                                        <thead style="background-color: #091d3e; color: #fff">
+                                                            <tr>
+                                                                <th scope="col">Floor</th>
+                                                                <th scope="col">Type</th>
+                                                                <th scope="col">Facing</th>
+                                                                <th scope="col">Area in SFT</th>
+                                                                <th scope="col">Land Share in Sq. Yards</th>
+                                                                <th scope="col">Status</th>
+                                                                <th scope="col">Need Loan facility?</th>
+                                                                <th scope="col">Choice</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <!--Table head-->
+                                                        <!--Table body-->
+                                                        <tbody>
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    <asp:Label ID="lbl2FloorFlatNo_1" runat="server" Text="1" Visible="true"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat1type" runat="server" Text="2 BHK"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat1facing" runat="server" Text="East"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat1sft" runat="server" Text="1200"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat1sqYards" runat="server" Text="45"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat1Available" runat="server" Text=""></asp:Label></td>
+                                                                <td>
+                                                                    <asp:RadioButtonList ID="rbtn2FloorLoan" runat="server" RepeatDirection="Horizontal">
+                                                                        <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                        <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                        <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                    </asp:RadioButtonList>
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <asp:Button ID="btn2ndFloorFlat1Book" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btn2ndFloorFlat1Book_Click" />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    <asp:Label ID="lbl2FloorFlatNo_2" runat="server" Text="2" Visible="true"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat2type" runat="server" Text="2 BHK"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat2facing" runat="server" Text="East"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat2sft" runat="server" Text="1250"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat2sqYards" runat="server" Text="45"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat2Available" runat="server" Text=""></asp:Label></td>
+                                                                <td>
+                                                                    <asp:RadioButtonList ID="rbtn2FloorFlat2Loan" runat="server" RepeatDirection="Horizontal">
+                                                                        <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                        <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                        <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                    </asp:RadioButtonList>
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <asp:Button ID="btn2ndFloorFlat2Book" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btn2ndFloorFlat2Book_Click" />
+                                                                </td>
+                                                            </tr>
+                                                            <tr style="background-color: #091d3e87; color: #fff">
+                                                                <td scope="row">
+                                                                    <asp:Label ID="lbl2FloorFlatNo_3" runat="server" Text="3" Visible="true"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat3type" runat="server" Text="3 BHK"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat3facing" runat="server" Text="East"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat3sft" runat="server" Text="1550"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat3sqYards" runat="server" Text="59"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat3Available" runat="server" Text="Booked"></asp:Label></td>
+                                                                <td>
+                                                                    <asp:RadioButtonList ID="rbtn2FloorFlat3Loan" runat="server" RepeatDirection="Horizontal" Enabled="false">
+                                                                        <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                        <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                        <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                    </asp:RadioButtonList>
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <asp:Button ID="btn2ndFloorFlat3Book" runat="server" CssClass="btn btn-primary" Text="Select" ReadOnly />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    <asp:Label ID="lbl2FloorFlatNo_4" runat="server" Text="4" Visible="true"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat4type" runat="server" Text="2 BHK"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat4facing" runat="server" Text="North"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat4sft" runat="server" Text="1200"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat4sqYards" runat="server" Text="45"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat4Available" runat="server" Text=""></asp:Label></td>
+                                                                <td>
+                                                                    <asp:RadioButtonList ID="rbtn2FloorFlat4Loan" runat="server" RepeatDirection="Horizontal">
+                                                                        <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                        <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                        <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                    </asp:RadioButtonList>
+
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <asp:Button ID="btn2ndFloorFlat4Book" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btn2ndFloorFlat4Book_Click" />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    <asp:Label ID="lbl2FloorFlatNo_5" runat="server" Text="5" Visible="true"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat5type" runat="server" Text="2 BHK"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat5facing" runat="server" Text="North"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat5sft" runat="server" Text="1200"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat5sqYards" runat="server" Text="45"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl2FloorFlat5Available" runat="server" Text=""></asp:Label></td>
+                                                                <td>
+                                                                    <asp:RadioButtonList ID="rbtn2FloorFlat5Loan" runat="server" RepeatDirection="Horizontal">
+                                                                        <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                        <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                        <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                    </asp:RadioButtonList>
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <asp:Button ID="btn2ndFloorFlat5Book" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btn2ndFloorFlat5Book_Click" />
+
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                        <!--Table body-->
+                                                    </table>
+                                                    <!--Table-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingThree">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                3rd Floor
+                                            </button>
+                                        </h2>
+                                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <div class="table-responsive mx-3">
+                                                    <!--Table-->
+                                                    <table class="table table-hover mb-0">
+                                                        <!--Table head-->
+                                                        <thead style="background-color: #091d3e; color: #fff">
+                                                            <tr>
+                                                                <th scope="col">Floor</th>
+                                                                <th scope="col">Type</th>
+                                                                <th scope="col">Facing</th>
+                                                                <th scope="col">Area in SFT</th>
+                                                                <th scope="col">Land Share in Sq. Yards</th>
+                                                                <th scope="col">Status</th>
+                                                                <th scope="col">Need Loan facility?</th>
+                                                                <th scope="col">Choice</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <!--Table head-->
+                                                        <!--Table body-->
+                                                        <tbody>
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    <asp:Label ID="lbl3FloorFlatNo_1" runat="server" Text="1" Visible="true"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat1type" runat="server" Text="2 BHK"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat1facing" runat="server" Text="East"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat1sft" runat="server" Text="1200"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat1sqYards" runat="server" Text="45"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat1Available" runat="server" Text=""></asp:Label></td>
+                                                                <td>
+                                                                    <asp:RadioButtonList ID="rbtn3FloorFlat1Loan" runat="server" RepeatDirection="Horizontal">
+                                                                        <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                        <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                        <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                    </asp:RadioButtonList>
+
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <asp:Button ID="btn3rdFloorFlat1Book" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btn3rdFloorFlat1Book_Click" /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    <asp:Label ID="lbl3FloorFlatNo_2" runat="server" Text="2" Visible="true"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat2type" runat="server" Text="2 BHK"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat2facing" runat="server" Text="East"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat2sft" runat="server" Text="1250"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat2sqYards" runat="server" Text="45"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat2Available" runat="server" Text=""></asp:Label></td>
+                                                                <td>
+                                                                    <asp:RadioButtonList ID="rbtn3FloorFlat2Loan" runat="server" RepeatDirection="Horizontal">
+                                                                        <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                        <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                        <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                    </asp:RadioButtonList>
+
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <asp:Button ID="btn3rdFloorFlat2Book" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btn3rdFloorFlat2Book_Click" /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    <asp:Label ID="lbl3FloorFlatNo_3" runat="server" Text="3" Visible="true"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat3type" runat="server" Text="3 BHK"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat3facing" runat="server" Text="East"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat3sft" runat="server" Text="1550"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat3sqYards" runat="server" Text="59"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat3Available" runat="server" Text=""></asp:Label></td>
+                                                                <td>
+                                                                    <asp:RadioButtonList ID="rbtn3FloorFlat3Loan" runat="server" RepeatDirection="Horizontal">
+                                                                        <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                        <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                        <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                    </asp:RadioButtonList>
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <asp:Button ID="btn3rdFloorFlat3Book" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btn3rdFloorFlat3Book_Click" /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    <asp:Label ID="lbl3FloorFlatNo_4" runat="server" Text="4" Visible="true"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat4type" runat="server" Text="2 BHK"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat4facing" runat="server" Text="North"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat4sft" runat="server" Text="1200"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat4sqYards" runat="server" Text="45"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat4Available" runat="server" Text=""></asp:Label></td>
+                                                                <td>
+                                                                    <asp:RadioButtonList ID="rbtn3FloorFlat4Loan" runat="server" RepeatDirection="Horizontal">
+                                                                        <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                        <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                        <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                    </asp:RadioButtonList>
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <asp:Button ID="btn3rdFloorFlat4Book" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btn3rdFloorFlat4Book_Click" /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    <asp:Label ID="lbl3FloorFlatNo_5" runat="server" Text="5" Visible="true"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat5type" runat="server" Text="2 BHK"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat5facing" runat="server" Text="North"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat5sft" runat="server" Text="1200"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat5sqYards" runat="server" Text="45"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl3FloorFlat5Available" runat="server" Text=""></asp:Label></td>
+                                                                <td>
+                                                                    <asp:RadioButtonList ID="rbtn3FloorFlat5Loan" runat="server" RepeatDirection="Horizontal">
+                                                                        <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                        <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                        <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                    </asp:RadioButtonList>
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <asp:Button ID="btn3rdFloorFlat5Book" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btn3rdFloorFlat5Book_Click" /></td>
+                                                            </tr>
+                                                        </tbody>
+                                                        <!--Table body-->
+                                                    </table>
+                                                    <!--Table-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingfour">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefour" aria-expanded="false" aria-controls="collapseThree">
+                                                4th Floor
+                                            </button>
+                                        </h2>
+                                        <div id="collapsefour" class="accordion-collapse collapse" aria-labelledby="headingfour" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <div class="table-responsive mx-3">
+                                                    <!--Table-->
+                                                    <table class="table table-hover mb-0">
+                                                        <!--Table head-->
+                                                        <thead style="background-color: #091d3e; color: #fff">
+                                                            <tr>
+                                                                <th scope="col">Floor</th>
+                                                                <th scope="col">Type</th>
+                                                                <th scope="col">Facing</th>
+                                                                <th scope="col">Area in SFT</th>
+                                                                <th scope="col">Land Share in Sq. Yards</th>
+                                                                <th scope="col">Status</th>
+                                                                <th scope="col">Need Loan facility?</th>
+                                                                <th scope="col">Choice</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <!--Table head-->
+                                                        <!--Table body-->
+                                                        <tbody>
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    <asp:Label ID="lbl4FloorFlatNo_1" runat="server" Text="1" Visible="true"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat1type" runat="server" Text="2 BHK"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat1facing" runat="server" Text="East"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat1sft" runat="server" Text="1200"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat1sqYards" runat="server" Text="45"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat1Available" runat="server" Text=""></asp:Label></td>
+                                                                <td>
+                                                                    <asp:RadioButtonList ID="rbtn4FloorFlat1Loan" runat="server" RepeatDirection="Horizontal">
+                                                                        <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                        <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                        <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                    </asp:RadioButtonList>
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <asp:Button ID="btn4thFloorFlat1Book" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btn4thFloorFlat1Book_Click" /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    <asp:Label ID="lbl4FloorFlatNo_2" runat="server" Text="2" Visible="true"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat2type" runat="server" Text="2 BHK"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat2facing" runat="server" Text="East"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat2sft" runat="server" Text="1250"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat2sqYards" runat="server" Text="45"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat2Available" runat="server" Text=""></asp:Label></td>
+                                                                <td>
+                                                                    <asp:RadioButtonList ID="rbtn4FloorFlat2Loan" runat="server" RepeatDirection="Horizontal">
+                                                                        <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                        <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                        <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                    </asp:RadioButtonList>
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <asp:Button ID="btn4thFloorFlat2Book" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btn4thFloorFlat2Book_Click" /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    <asp:Label ID="lbl4FloorFlatNo_3" runat="server" Text="3" Visible="true"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat3type" runat="server" Text="3 BHK"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat3facing" runat="server" Text="East"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat3sft" runat="server" Text="1550"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat3sqYards" runat="server" Text="59"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat3Available" runat="server" Text=""></asp:Label></td>
+                                                                <td>
+                                                                    <asp:RadioButtonList ID="rbtn4FloorFlat3Loan" runat="server" RepeatDirection="Horizontal">
+                                                                        <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                        <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                        <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                    </asp:RadioButtonList>
+
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <asp:Button ID="btn4thFloorFlat3Book" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btn4thFloorFlat3Book_Click" /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    <asp:Label ID="lbl4FloorFlatNo_4" runat="server" Text="4" Visible="true"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat4type" runat="server" Text="2 BHK"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat4facing" runat="server" Text="North"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat4sft" runat="server" Text="1200"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat4sqYards" runat="server" Text="45"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat4Available" runat="server" Text=""></asp:Label></td>
+                                                                <td>
+                                                                    <asp:RadioButtonList ID="rbtn4FloorFlat4Loan" runat="server" RepeatDirection="Horizontal">
+                                                                        <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                        <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                        <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                    </asp:RadioButtonList>
+
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <asp:Button ID="btn4thFloorFlat4Book" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btn4thFloorFlat4Book_Click" />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    <asp:Label ID="lbl4FloorFlatNo_5" runat="server" Text="5" Visible="true"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat5type" runat="server" Text="2 BHK"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat5facing" runat="server" Text="North"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat5sft" runat="server" Text="1200"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat5sqYards" runat="server" Text="45"></asp:Label></td>
+                                                                <td scope="col">
+                                                                    <asp:Label ID="lbl4FloorFlat5Available" runat="server" Text=""></asp:Label></td>
+                                                                <td>
+                                                                    <asp:RadioButtonList ID="rbtn4FloorFlat5Loan" runat="server" RepeatDirection="Horizontal">
+                                                                        <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                        <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                        <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                    </asp:RadioButtonList>
+                                                                </td>
+                                                                <td scope="col">
+                                                                    <asp:Button ID="btn4thFloorFlat5Book" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btn4thFloorFlat5Book_Click" /></td>
+                                                            </tr>
+                                                        </tbody>
+                                                        <!--Table body-->
+                                                    </table>
+                                                    <!--Table-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingfive">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
+                                                5th Floor
+                                            </button>
+                                        </h2>
+                                        <div id="collapsefive" class="accordion-collapse collapse" aria-labelledby="headingfive" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <div class="table-responsive mx-3">
+                                                    <div class="table-responsive mx-3">
+                                                        <!--Table-->
+                                                        <table class="table table-hover mb-0">
+                                                            <!--Table head-->
+                                                            <thead style="background-color: #091d3e; color: #fff">
+                                                                <tr>
+                                                                    <th scope="col">Floor</th>
+                                                                    <th scope="col">Type</th>
+                                                                    <th scope="col">Facing</th>
+                                                                    <th scope="col">Area in SFT</th>
+                                                                    <th scope="col">Land Share in Sq. Yards</th>
+                                                                    <th scope="col">Status</th>
+                                                                    <th scope="col">Need Loan facility?</th>
+                                                                    <th scope="col">Choice</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <!--Table head-->
+                                                            <!--Table body-->
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td scope="row">
+                                                                        <asp:Label ID="lbl5thFloorFlatNo_1" runat="server" Text="1" Visible="true"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat1type" runat="server" Text="2 BHK"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat1facing" runat="server" Text="East"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat1sft" runat="server" Text="1200"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat1sqYards" runat="server" Text="45"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat1Available" runat="server" Text=""></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:RadioButtonList ID="rbtn5thFloorFlat1Loan" runat="server" RepeatDirection="Horizontal">
+                                                                            <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                            <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                            <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                        </asp:RadioButtonList>
+                                                                    </td>
+                                                                    <td scope="col">
+                                                                        <asp:Button ID="btn5thFloorFlat1Book" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btn5thFloorFlat1Book_Click" /></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td scope="row">
+                                                                        <asp:Label ID="lbl5thFloorFlatNo_2" runat="server" Text="2" Visible="true"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat2type" runat="server" Text="2 BHK"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat2facing" runat="server" Text="East"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat2sft" runat="server" Text="1250"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat2sqYards" runat="server" Text="45"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat2Available" runat="server" Text=""></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:RadioButtonList ID="rbtn5thFloorFlat2Loan" runat="server" RepeatDirection="Horizontal">
+                                                                            <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                            <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                            <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                        </asp:RadioButtonList>
+
+                                                                    </td>
+                                                                    <td scope="col">
+                                                                        <asp:Button ID="btn5thFloorFlat2Book" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btn5thFloorFlat2Book_Click" /></td>
+                                                                </tr>
+                                                                <tr style="background-color: #091d3e87; color: #fff">
+                                                                    <td scope="row">
+                                                                        <asp:Label ID="lbl5thFloorFlatNo_3" runat="server" Text="3" Visible="true"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat3type" runat="server" Text="3 BHK"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat3facing" runat="server" Text="East"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat3sft" runat="server" Text="1550"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat3sqYards" runat="server" Text="59"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat3Available" runat="server" Text="Booked"></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:RadioButtonList ID="rbtn5thFloorFlat3Loan" runat="server" RepeatDirection="Horizontal" Enabled="false">
+                                                                            <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                            <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                            <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                        </asp:RadioButtonList>
+
+                                                                    </td>
+                                                                    <td scope="col">
+                                                                        <asp:Button ID="btn5thFloorFlat3Book" runat="server" CssClass="btn btn-primary" Text="Select" Enabled="false" /></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td scope="row">
+                                                                        <asp:Label ID="lbl5thFloorFlatNo_4" runat="server" Text="4" Visible="true"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat4type" runat="server" Text="2 BHK"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat4facing" runat="server" Text="North"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat4sft" runat="server" Text="1200"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat4sqYards" runat="server" Text="45"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat4Available" runat="server" Text=""></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:RadioButtonList ID="rbtn5thFloorFlat4Loan" runat="server" RepeatDirection="Horizontal">
+                                                                            <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                            <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                            <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                        </asp:RadioButtonList>
+
+                                                                    </td>
+                                                                    <td scope="col">
+                                                                        <asp:Button ID="btn5thFloorFlat4Book" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btn5thFloorFlat4Book_Click" /></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td scope="row">
+                                                                        <asp:Label ID="lbl5thFloorFlatNo_5" runat="server" Text="5" Visible="true"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat5type" runat="server" Text="2 BHK"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat5facing" runat="server" Text="North"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat5sft" runat="server" Text="1200"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat5sqYards" runat="server" Text="45"></asp:Label></td>
+                                                                    <td scope="col">
+                                                                        <asp:Label ID="lbl5thFloorFlat5Available" runat="server" Text=""></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:RadioButtonList ID="rbtn5thFloorFlat5Loan" runat="server" RepeatDirection="Horizontal">
+                                                                            <asp:ListItem Text="&nbsp;Yes" Value="Yes" />
+                                                                            <asp:ListItem Text="&nbsp;No" Value="No" />
+                                                                            <asp:ListItem Text="&nbsp;Optional" Value="Optional" />
+                                                                        </asp:RadioButtonList>
+
+                                                                    </td>
+                                                                    <td scope="col">
+                                                                        <asp:Button ID="btn5thFloorFlat5Book" runat="server" CssClass="btn btn-primary" Text="Select" OnClick="btn5thFloorFlat5Book_Click" /></td>
+                                                                </tr>
+                                                            </tbody>
+                                                            <!--Table body-->
+                                                        </table>
+                                                        <!--Table-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Button trigger modal -->
+        <!-- Modal -->
+        <div style="height: 50px;">
+        </div>
+        <div class="contact-block">
+            <h3 class="contact-block__title text-light" style="background: #091d3e; text-align: center; margin-bottom: auto; height: 60px; padding-top: 10px;">Marketing partner - <span style="color: aqua;">SKILL TECHNOLOGIES</span></h3>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+    </form>
+</body>
+</html>

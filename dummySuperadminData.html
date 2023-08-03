@@ -1,0 +1,47 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="dummySuperadminData.aspx.cs" Inherits="skilltechApp.dummySuperadminData" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div style="padding: 50px;">
+            <asp:Label ID="lblCheckedItems" runat="server" Text=""></asp:Label>
+
+            <asp:Button ID="btnUIUX" runat="server" Text="" CssClass="btn btn-primary" />
+            <%--  <asp:Button ID="btnUIUX" runat="server" Text="" CssClass="btn btn-primary" />
+            <asp:Button ID="btnDigMarket" runat="server" Text="" CssClass="btn btn-primary" />
+            <asp:Button ID="BtnAdmin" runat="server" Text="" CssClass="btn btn-primary" />
+            <asp:Button ID="btnDev" runat="server" Text="" CssClass="btn btn-primary" />
+            <asp:Button ID="btnQA" runat="server" Text="" CssClass="btn btn-primary" />
+            <asp:Button ID="btnLead" runat="server" Text="" CssClass="btn btn-primary" />
+            <asp:Button ID="btnBA" runat="server" Text="" CssClass="btn btn-primary" />--%>
+
+        </div>
+
+        <div style="padding: 50px;">
+            <asp:CheckBoxList ID="CheckboxList1" runat="server" AutoPostBack="false" Width="450px" RepeatDirection="Horizontal" RepeatColumns="3">
+                <asp:ListItem Text="&nbsp;Hello" Value=" Hello"></asp:ListItem>
+                <asp:ListItem Text="Hello" Value="Hello"></asp:ListItem>
+                <asp:ListItem Text="Hello" Value="Hello"></asp:ListItem>
+                <asp:ListItem Text="Hello" Value="Hello"></asp:ListItem>
+                <asp:ListItem Text="Hello" Value="Hello"></asp:ListItem>
+                <asp:ListItem Text="Hello" Value="Hello"></asp:ListItem>
+                 <asp:ListItem Text="Hello" Value="Hello"></asp:ListItem>
+                <asp:ListItem Text="Hello" Value="Hello"></asp:ListItem>
+                <asp:ListItem Text="Hello" Value="Hello"></asp:ListItem>
+               
+            </asp:CheckBoxList>
+        </div>
+
+        <div>
+        </div>
+    </form>
+</body>
+</html>
